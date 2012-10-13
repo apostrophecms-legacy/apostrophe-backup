@@ -120,7 +120,8 @@ additional directory level on the destination:
 Now push the database back up to the server as well:
    
     cat /usr/local/remote-backup/a1.5/daily/myclient.com/0/db.sql.gz | \
-    ssh someuser@someserver gunzip -c | /var/www/myclient.com/symfony/symfony \     project:mysql-load --env=prod
+    ssh someuser@someserver gunzip -c | /var/www/myclient.com/symfony/symfony \
+    project:mysql-load --env=prod
 
 These are just examples of course. The key thing is that you have a copy of
 the symfony project folder and a gzipped mysqldump file which you can
