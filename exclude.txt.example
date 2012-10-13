@@ -1,0 +1,20 @@
+# Things that can be safely excluded from backup on ALL sites.
+# Be thoughtful when adding things here
+
+cache
+
+# Scaled versions can be rendered again on the fly as needed
+web/uploads/media_items/*.c.jpg
+web/uploads/media_items/*.s.jpg
+
+# Temporary files
+data/a_writable/persistent_uploads
+data/a_writable/a_feed_cache
+data/a_writable/a_hint_cache
+data/a_writable/tmp
+
+# Symfony 1 logs
+log
+# Symfony 2 logs
+app/logs
+

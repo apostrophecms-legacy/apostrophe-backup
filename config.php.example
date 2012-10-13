@@ -1,0 +1,9 @@
+<?php
+
+$keep = 3;
+
+$sites = array(
+  array('host' => 'myclient.com', 'user' => 'myclient', 'port' => 22, 'path' => '/var/www/myclient/symfony')
+  // , array(another one), ... 
+);
+

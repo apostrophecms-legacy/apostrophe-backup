@@ -1,0 +1,9 @@
+# Don't commit our own settings to github!
+sites.php
+exclude.txt
+# Don't commit our own backups to github!
+daily
+weekly
+monthly
+quarterly
+annual
