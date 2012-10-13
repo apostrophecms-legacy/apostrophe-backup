@@ -139,6 +139,12 @@ such as Symfony 2, node.js and MongoDB. We have another backup script
 that is better suited to such environments and we plan to release
 that as well.
 
+One of the nicer features is that rsync is used to minimize the
+work at every step. Yesterday's backup is rsync'd to become the
+backup of two days ago, which usually involves less work than
+a full copy. Then the live site is rsync'd over what was yesterday's
+backup to become today's backup.
+
 ## Contributing
 
 Feel free! Please don't break backwards compatibility. Test your code
