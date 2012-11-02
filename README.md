@@ -23,14 +23,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 Copy `config.php.example` to `config.php`. Then edit it to specify the
 sites to be backed up. Also specify how many backups to keep. Keep
 in mind that you can run this script for daily, weekly and/or monthly
-backups, and they will each keep that many versions.
+backups, and they will each keep that many versions. 
 
 `config.php` looks like this:
 
     <?php
    
     $keep = 3;
- 
+
     $sites = array(
       array(
         'host' => 'myclient.com', 
@@ -109,6 +109,52 @@ text editor. Here's what our settings look like:
 Great, you have backups. How do you restore your site in the event your VPS
 turns into a jar of Folger's Crystals, or your client asks you to undo
 a nasty mistake in their database?
+
+### Using restore.php
+
+The easiest way is to use the provided `restore.php` script. This script
+assumes that you have a development environment in which you have a working
+copy of the website, and you wish to restore the database and
+`data/a_writable` and `web/uploads` folders from a backup to that environment, 
+so you can test them and then sync content up to a production server.
+
+To use this script, first create a `restore-config.php` file in the same
+folder with `restore.php` and populate it with the right username, hostname 
+and path so that `rsync` commands can find your backups on the server you're
+backing up to:
+
+    <?php
+    $rsync = 'backupuser@mybackupserver.com:/usr/local/remote-backups';
+
+Now `cd` into your project folder and invoke the script. To restore
+last night's backup, you just need the folder name you backed it up
+under, as you specified in `config.php`. Usually this is the
+production hostname:
+
+    php /path/to/restore.php mysite.com
+
+If the folder does not exist `restore.php` will provide a helpful list
+of folders that do exist.
+
+To restore a backup from one day ago, use:
+
+    php /path/to/restore.php mysite.com daily 1
+
+To restore a backup from two weeks ago, use:
+
+    php /path/to/restore.php mysite.com weekly 2
+
+Now test your site in your local development environment and make sure
+all is well. When you are satisfied, you can push it up to your new
+production server. Configure that server as you normally would, 
+`apostrophe:deploy production prod` to push the code there, then
+use `project:sync-content frontend dev to prod@production` to push
+the content there.
+
+### Restoring manually
+
+We use restore.php. But if you want to restore directly to a new
+production server, that's not very hard to do either.
 
 In `/usr/local/remote-backup/a1.5/daily/myclient.com/0/files`, you'll find
 the latest backup of myclient.com's Symfony project folder. Restore that

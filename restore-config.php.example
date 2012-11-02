@@ -1,0 +1,3 @@
+<?php
+
+$rsync = 'backupuser@mybackupserver.com:/usr/local/remote-backups';

@@ -1,5 +1,6 @@
 # Don't commit our own settings to github!
 config.php
+restore-config.php
 exclude.txt
 # Don't commit our own backups to github!
 daily
