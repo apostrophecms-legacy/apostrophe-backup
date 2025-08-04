@@ -1,3 +1,7 @@
+# ⛔️ **DEPRECATED** — do not use for new projects
+
+See [our current docs](https://docs.apostrophecms.org/)
+
 # Apostrophe Backup
 
 Apostrophe Backup is a simple tool for backing up one or more
